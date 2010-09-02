@@ -103,7 +103,16 @@ function likeit_button_filter($content) {
 
 // generate the Like-it button
 function likeit_get_button() {
-	$button = '<div><a href="#" class="like_it" title="I like this post!">like it!</a></div>';
+	$canvote = likeit_can_vote(get_the_ID(), $_SERVER['REMOTE_ADDR']) ? 'likeit-canvote' : 'likeit-voted';
+	$text = get_option('likeit-text');
+	$count = likeit_get_count_by_post_id(get_the_ID());
+	
+	$button = <<<BUTTON
+	<div class="likeit-button $canvote">
+		<div class="likeit-text">$text</div>
+		<div class="likeit-count">$count</div>
+	</div>
+BUTTON;
 	
 	return $button;
 }
@@ -112,7 +121,7 @@ function likeit_get_button() {
 function likeit_get_count_by_post_id($post_id) {
 	global $wpdb;
 	
-	return $wpdb->get_var("SELECT COUNT(id) WHERE post_id = $post_id");
+	return intval($wpdb->get_var("SELECT COUNT(id) WHERE post_id = $post_id"));
 }
 
 // can this IP like this post (false if already voted)
@@ -121,4 +130,3 @@ function likeit_can_vote($post_id, $ip) {
 	
 	return $wpdb->get_var("SELECT COUNT(id) WHERE post_id = $post_id AND ip = '$ip'") == 0;
 }
-
