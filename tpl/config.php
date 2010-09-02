@@ -24,6 +24,10 @@ if ( !function_exists( 'add_action' ) ) {
 
 <div class="wrap">
 
+<?php if(isset($updated)): ?>
+	<div class="updated"><p><strong><?php _e('Options saved.'); ?></strong></p></div>
+<?php endif ?>
+
 <h2><?php _e('Like-it configuration') ?></h2>
 
 <div class="narrow">

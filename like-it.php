@@ -30,6 +30,8 @@ if ( !function_exists( 'add_action' ) ) {
 $likes_table = $wpdb->prefix . 'likeit_likes';
 $likeit_dbVersion = '1.0';
 
+// create database and save default options
+
 register_activation_hook( __FILE__, 'likeit_activate' );
 function likeit_activate() {
 	global $wpdb;
@@ -54,22 +56,55 @@ function likeit_activate() {
 	add_option('likeit-text', 'Like!', '', 'yes');
 }
 
+// register plugin config
+
 add_action('admin_menu', 'likeit_config_page');
 function likeit_config_page() {
 	if ( function_exists('add_options_page') )
 		add_options_page(__('Like-it Configuration'), __('Like-it Configuration'), 'manage_options', 'likeit-config', 'likeit_conf');
 }
 
+// plugin config page 
+
 function likeit_conf() {
+
+    $opt_name = 'mt_favorite_color';
+    $data_field_name = 'mt_favorite_color';
+
+    $opt_val = get_option( $opt_name );
+	
+	if( isset($_POST['likeit-text']) ) {
+        update_option( 'likeit-text', $_POST['likeit-text'] );
+		
+		$updated = true;
+	}
+	
 	require('tpl/config.php');
 }
 
-add_action('admin_head', likeit_add_header_links);
-function likeit_add_header_links() {
-	echo '<link rel="stylesheet" type="text/css" href="'.WP_PLUGIN_URL.'/css/likeit.css" media="screen" />'."\n";
-}
+// add_action('admin_head', likeit_admin_header_links);
+// function likeit_admin_header_links() {
+// 	echo '<link rel="stylesheet" type="text/css" href="'.WP_PLUGIN_URL.'/css/likeit.css" media="screen" />'."\n";
+// }
 
 add_action('admin_init', 'likeit_register_settings');
 function likeit_register_settings() {
 	register_setting( 'likeit_options', 'likeit-text' );
 }
+
+// add filter to echo the Like-it button
+
+add_filter('the_content', likeit_button_filter);
+function likeit_button_filter($content) {
+	if( !(is_page() || is_feed()) )
+		$content .= likeit_get_button();
+	return $content;
+}
+
+// generate the Like-it button
+function likeit_get_button() {
+	$button = '<div><a href="#" class="like_it" title="I like this post!">like it!</a></div>';
+	
+	return $button;
+}
+
