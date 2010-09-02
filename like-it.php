@@ -117,5 +117,8 @@ function likeit_get_count_by_post_id($post_id) {
 
 // can this IP like this post (false if already voted)
 function likeit_can_vote($post_id, $ip) {
+	global $wpdb;
+	
 	return $wpdb->get_var("SELECT COUNT(id) WHERE post_id = $post_id AND ip = '$ip'") == 0;
 }
+
