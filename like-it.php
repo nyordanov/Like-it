@@ -108,3 +108,9 @@ function likeit_get_button() {
 	return $button;
 }
 
+// get like count for a post_id
+function likeit_get_count_by_post_id($post_id) {
+	global $wpdb;
+	
+	return $wpdb->get_var("SELECT COUNT(id) WHERE post_id = $post_id");
+}
