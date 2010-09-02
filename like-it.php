@@ -82,14 +82,15 @@ function likeit_conf() {
 	require('tpl/config.php');
 }
 
-// add_action('admin_head', likeit_admin_header_links);
-// function likeit_admin_header_links() {
-// 	echo '<link rel="stylesheet" type="text/css" href="'.WP_PLUGIN_URL.'/css/likeit.css" media="screen" />'."\n";
-// }
-
 add_action('admin_init', 'likeit_register_settings');
 function likeit_register_settings() {
 	register_setting( 'likeit_options', 'likeit-text' );
+}
+
+// add css
+add_action('wp_print_styles', likeit_styles);
+function likeit_styles() {
+	wp_enqueue_style('likeit', WP_PLUGIN_URL.'/like-it/content/like-it.css', false, '0.1', 'all');
 }
 
 // add filter to echo the Like-it button
