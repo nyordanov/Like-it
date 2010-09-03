@@ -90,7 +90,7 @@ function likeit_register_settings() {
 // add javascript
 add_action('wp_print_scripts', likeit_scripts);
 function likeit_scripts() {
-	wp_enqueue_script( 'likeit', plugin_dir_url(__FILE__). 'content/like-it.js', array('jquery'));
+	wp_enqueue_script( 'likeit', plugin_dir_url(__FILE__). 'content/like-it.js', array('jquery'), '0.1');
 	wp_localize_script( 'likeit', 'likeit', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 }
 
