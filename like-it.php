@@ -27,7 +27,7 @@ if ( !function_exists( 'add_action' ) ) {
 	exit;
 }
 
-$likeit_table = $wpdb->prefix . 'likeit_likes';
+$likeit_table = $wpdb->prefix . 'likeit';
 $likeit_db_version = '1.0';
 
 // create database and save default options
