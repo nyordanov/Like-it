@@ -28,13 +28,13 @@ if ( !function_exists( 'add_action' ) ) {
 }
 
 $likeit_table = $wpdb->prefix . 'likeit_likes';
-$likeit_dbVersion = '1.0';
+$likeit_db_version = '1.0';
 
 // create database and save default options
 
 register_activation_hook( __FILE__, 'likeit_activate' );
 function likeit_activate() {
-	global $wpdb, $likeit_dbVersion, $likeit_table;
+	global $wpdb, $likeit_db_version, $likeit_table;
 	
 	if($wpdb->get_var("show tables like '$likeit_table'") != $likeit_table) {
 		$sql = "CREATE TABLE  $likeit_table  (
@@ -48,7 +48,7 @@ function likeit_activate() {
 		require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 		dbDelta($sql);
 
-		add_option("likeit_dbVersion", $likeit_dbVersion);
+		add_option("likeit_dbVersion", $likeit_db_version);
 	}
 	
 	add_option('likeit-text', 'Like!', '', 'yes');
