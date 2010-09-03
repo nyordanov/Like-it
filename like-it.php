@@ -87,6 +87,13 @@ function likeit_register_settings() {
 	register_setting( 'likeit_options', 'likeit-text' );
 }
 
+// add javascript
+add_action('wp_print_scripts', likeit_scripts);
+function likeit_scripts() {
+	wp_enqueue_script( 'likeit', plugin_dir_url(__FILE__). 'content/like-it.js', array('jquery'));
+	wp_localize_script( 'likeit', 'likeit', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+}
+
 // add css
 add_action('wp_print_styles', likeit_styles);
 function likeit_styles() {
