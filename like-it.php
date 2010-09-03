@@ -97,7 +97,7 @@ function likeit_scripts() {
 // add css
 add_action('wp_print_styles', likeit_styles);
 function likeit_styles() {
-	wp_enqueue_style('likeit', WP_PLUGIN_URL.'/like-it/content/like-it.css', false, '0.1', 'all');
+	wp_enqueue_style('likeit', plugin_dir_url(__FILE__).'content/like-it.css', false, '0.1', 'all');
 }
 
 // add filter to echo the Like-it button
