@@ -37,7 +37,6 @@ function likeit_activate() {
 	global $wpdb;
 	global $likeit_dbVersion;
 	
-	$table_name = $wpdb->prefix . "likeit";
 	if($wpdb->get_var("show tables like '$table_name'") != $table_name) {
 		$sql = "CREATE TABLE  $table_name  (
 			id INT(20) NOT NULL AUTO_INCREMENT,
@@ -136,4 +135,16 @@ function likeit_can_vote($post_id, $ip) {
 	global $wpdb;
 	
 	return $wpdb->get_var("SELECT COUNT(id) WHERE post_id = $post_id AND ip = '$ip'") == 0;
+}
+
+// save a new vote
+add_action('wp_ajax_nopriv_likeit_register_vote', 'likeit_register_vote');
+add_action('wp_ajax_likeit_register_vote', 'likeit_register_vote');
+function likeit_register_vote() {
+	global $wpdb, $likes_table;
+	
+	$id = intval($_POST['id']);
+	$ip = $_SERVER['REMOTE_ADDR'];
+	
+	$wpdb->query("INSERT INTO $likes_table (post_id, ip) VALUES ($id, '$ip')");
 }
