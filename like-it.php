@@ -115,7 +115,7 @@ function likeit_get_button() {
 	
 	$button = <<<BUTTON
 	<div class="likeit-button $canvote">
-		<div class="likeit-text" id="likeit_$id">$text</div><div class="likeit-count">$count</div>
+		<div class="likeit-text" id="likeit_$id">$text</div><div class="likeit-count"><span>$count</span></div>
 	</div>
 BUTTON;
 	
