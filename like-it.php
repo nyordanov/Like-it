@@ -27,18 +27,17 @@ if ( !function_exists( 'add_action' ) ) {
 	exit;
 }
 
-$likes_table = $wpdb->prefix . 'likeit_likes';
+$likeit_table = $wpdb->prefix . 'likeit_likes';
 $likeit_dbVersion = '1.0';
 
 // create database and save default options
 
 register_activation_hook( __FILE__, 'likeit_activate' );
 function likeit_activate() {
-	global $wpdb;
-	global $likeit_dbVersion;
+	global $wpdb, $likeit_dbVersion, $likeit_table;
 	
-	if($wpdb->get_var("show tables like '$table_name'") != $table_name) {
-		$sql = "CREATE TABLE  $table_name  (
+	if($wpdb->get_var("show tables like '$likeit_table'") != $likeit_table) {
+		$sql = "CREATE TABLE  $likeit_table  (
 			id INT(20) NOT NULL AUTO_INCREMENT,
 			time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 			post_id INT(20) NOT NULL,
@@ -125,26 +124,26 @@ BUTTON;
 
 // get like count for a post_id
 function likeit_get_count_by_post_id($post_id) {
-	global $wpdb;
+	global $wpdb. $likeit_table;
 	
-	return intval($wpdb->get_var("SELECT COUNT(id) FROM $likes_table WHERE post_id = $post_id"));
+	return intval($wpdb->get_var("SELECT COUNT(id) FROM $likeit_table WHERE post_id = $post_id"));
 }
 
 // can this IP like this post (false if already voted)
 function likeit_can_vote($post_id, $ip) {
-	global $wpdb;
+	global $wpdb, $likeit_table;
 	
-	return $wpdb->get_var("SELECT COUNT(id) FROM $likes_table WHERE post_id = $post_id AND ip = '$ip'") == 0;
+	return $wpdb->get_var("SELECT COUNT(id) FROM $likeit_table WHERE post_id = $post_id AND ip = '$ip'") == 0;
 }
 
 // save a new vote
 add_action('wp_ajax_nopriv_likeit_register_vote', 'likeit_register_vote');
 add_action('wp_ajax_likeit_register_vote', 'likeit_register_vote');
 function likeit_register_vote() {
-	global $wpdb, $likes_table;
+	global $wpdb, $likeit_table;
 	
 	$id = intval($_POST['id']);
 	$ip = $_SERVER['REMOTE_ADDR'];
 	
-	$wpdb->query("INSERT INTO $likes_table (post_id, ip) VALUES ($id, '$ip')");
+	$wpdb->query("INSERT INTO $likeit_table (post_id, ip) VALUES ($id, '$ip')");
 }
