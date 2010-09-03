@@ -112,11 +112,12 @@ function likeit_button_filter($content) {
 function likeit_get_button() {
 	$canvote = likeit_can_vote(get_the_ID(), $_SERVER['REMOTE_ADDR']) ? 'likeit-canvote' : 'likeit-voted';
 	$text = get_option('likeit-text');
-	$count = likeit_get_count_by_post_id(get_the_ID());
+	$id = get_the_ID();
+	$count = likeit_get_count_by_post_id($id);
 	
 	$button = <<<BUTTON
 	<div class="likeit-button $canvote">
-		<div class="likeit-text">$text</div><div class="likeit-count">$count</div>
+		<div class="likeit-text" id="likeit_$id">$text</div><div class="likeit-count">$count</div>
 	</div>
 BUTTON;
 	
