@@ -1,4 +1,4 @@
-(function($) {
+jQuery(function($) {
 	$('.likeit-canvote .likeit-text').click(function() {
 		$.post(likeit.ajaxurl, {
 			id: $(this).attr('id').split('_')[1],
@@ -9,4 +9,4 @@
 			});
 		})
 	});
-})(jQuery);
+});
