@@ -145,5 +145,6 @@ function likeit_register_vote() {
 	$id = intval($_POST['id']);
 	$ip = $_SERVER['REMOTE_ADDR'];
 	
-	$wpdb->query("INSERT INTO $likeit_table (post_id, ip) VALUES ($id, '$ip')");
+	if(likeit_can_vote($id, $ip))
+		$wpdb->query("INSERT INTO $likeit_table (post_id, ip) VALUES ($id, '$ip')");
 }
