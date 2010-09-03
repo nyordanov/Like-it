@@ -147,4 +147,6 @@ function likeit_register_vote() {
 	
 	if(likeit_can_vote($id, $ip))
 		$wpdb->query("INSERT INTO $likeit_table (post_id, ip) VALUES ($id, '$ip')");
+	
+	echo likeit_get_count_by_post_id($id);
 }
