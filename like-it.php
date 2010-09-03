@@ -127,14 +127,14 @@ BUTTON;
 function likeit_get_count_by_post_id($post_id) {
 	global $wpdb;
 	
-	return intval($wpdb->get_var("SELECT COUNT(id) WHERE post_id = $post_id"));
+	return intval($wpdb->get_var("SELECT COUNT(id) FROM $likes_table WHERE post_id = $post_id"));
 }
 
 // can this IP like this post (false if already voted)
 function likeit_can_vote($post_id, $ip) {
 	global $wpdb;
 	
-	return $wpdb->get_var("SELECT COUNT(id) WHERE post_id = $post_id AND ip = '$ip'") == 0;
+	return $wpdb->get_var("SELECT COUNT(id) FROM $likes_table WHERE post_id = $post_id AND ip = '$ip'") == 0;
 }
 
 // save a new vote
