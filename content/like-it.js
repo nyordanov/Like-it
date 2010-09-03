@@ -1,6 +1,6 @@
 (function($) {
 	$('.likeit-canvote .likeit-text').click(function() {
-		$.post(ajax_url, {
+		$.post(likeit.ajaxurl, {
 			id: $(this).attr('id').split('_')[1],
 			action: 'likeit_register_vote'
 		}, function(data) {
