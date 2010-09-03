@@ -94,7 +94,6 @@ function likeit_styles() {
 }
 
 // add filter to echo the Like-it button
-
 add_filter('the_content', likeit_button_filter);
 function likeit_button_filter($content) {
 	if( !(is_page() || is_feed()) )
@@ -110,8 +109,7 @@ function likeit_get_button() {
 	
 	$button = <<<BUTTON
 	<div class="likeit-button $canvote">
-		<div class="likeit-text">$text</div>
-		<div class="likeit-count">$count</div>
+		<div class="likeit-text">$text</div><div class="likeit-count">$count</div>
 	</div>
 BUTTON;
 	
