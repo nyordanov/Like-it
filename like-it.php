@@ -103,7 +103,7 @@ function likeit_styles() {
 // add filter to echo the Like-it button
 add_filter('the_content', likeit_button_filter);
 function likeit_button_filter($content) {
-	if( !(is_page() || is_feed()) )
+	if( !(is_page() || is_feed()) && get_option('likeit-autodisplay') == 'on' )
 		$content .= likeit_get_button();
 	return $content;
 }
