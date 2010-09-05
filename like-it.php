@@ -32,7 +32,7 @@ global $likeit_dbVersion = '1.0';
 
 // create database and save default options
 
-register_activation_hook( __FILE__, 'likeit_activate' );
+register_activation_hook(__FILE__, 'likeit_activate');
 function likeit_activate() {
 	global $wpdb, $likeit_dbVersion, $likeit_table;
 	
@@ -53,6 +53,18 @@ function likeit_activate() {
 	
 	add_option('likeit-text', 'Like!', '', 'yes');
 	add_option('likeit-autodisplay', 'on', '', 'yes');
+}
+
+// delete table during uninstall
+register_uninstall_hook(__FILE__, 'likeit_uninstall');
+function likeit_uninstall() {
+	global $wpdb, $likeit_table;
+	
+	if(isset(WP_UNINSTALL_PLUGIN)) {
+		$wpdb->query("DELETE TABLE IF EXISTS $likeit_table");
+		delete_option('likeit-text');
+		delete_option('likeit-autodisplay');
+	}
 }
 
 // register plugin config
