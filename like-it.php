@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Like-it
-Plugin URI: http://nyordanov.com
+Plugin URI: http://nyordanov.com/projects
 Description: Like-it allows post readers mark their approval of a post by clicking the Like-it button, instead of posting yet another "I like this post" comment
 Version: 1.1
 Author: Nikolay Yordanov
