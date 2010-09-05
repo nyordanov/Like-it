@@ -108,6 +108,11 @@ function likeit_button_filter($content) {
 	return $content;
 }
 
+// template function to echo the button
+function likeit_button() {
+	echo likeit_get_button();
+}
+
 // generate the Like-it button
 function likeit_get_button() {
 	$canvote = likeit_can_vote(get_the_ID(), $_SERVER['REMOTE_ADDR']) ? 'likeit-canvote' : 'likeit-voted';
