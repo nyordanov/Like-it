@@ -52,6 +52,7 @@ function likeit_activate() {
 	}
 	
 	add_option('likeit-text', 'Like!', '', 'yes');
+	add_option('likeit-autodisplay', 'on', '', 'yes');
 }
 
 // register plugin config
@@ -73,6 +74,7 @@ function likeit_conf() {
 	
 	if( isset($_POST['likeit-text']) ) {
         update_option( 'likeit-text', $_POST['likeit-text'] );
+		update_option( 'likeit-autodisplay', $_POST['likeit-autodisplay'] );
 		
 		$updated = true;
 	}
