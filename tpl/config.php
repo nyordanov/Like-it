@@ -36,7 +36,7 @@ if ( !function_exists( 'add_action' ) ) {
 		<input type="text" id="likeit-text" name="likeit-text" value="<?php echo get_option('likeit-text')?>" />
 		<br />
 		<label for="likeit-autodisplay"><?php _e('Display button') ?></label>
-		<input type="checkbox" id="likeit-autodisplay" name="likeit-autodisplay" checked="<?php echo get_option('likeit-autodisplay')?>" />
+		<input type="checkbox" id="likeit-autodisplay" name="likeit-autodisplay" <?php if(get_option('likeit-autodisplay') == 'on'): ?>checked="checked"<?php endif ?> />
 		<label for="likeit-autodisplay"><?php _e('If checked, the button will be appended to the end of each post. If you want to place it elsewhere, you may use <code>&lt?php likeit_button(); ?&gt;</code> in your theme, but remember that it uses <code>get_the_ID()</code> to get current post\'s id') ?></label>
 		<br />
 		<input type="submit" value="<?php _e('Update options &raquo;')?>" />
