@@ -60,7 +60,7 @@ register_uninstall_hook(__FILE__, 'likeit_uninstall');
 function likeit_uninstall() {
 	global $wpdb, $likeit_table;
 	
-	if(isset(WP_UNINSTALL_PLUGIN)) {
+	if(defined(WP_UNINSTALL_PLUGIN)) {
 		$wpdb->query("DELETE TABLE IF EXISTS $likeit_table");
 		delete_option('likeit-text');
 		delete_option('likeit-autodisplay');
