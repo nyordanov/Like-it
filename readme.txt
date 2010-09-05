@@ -18,6 +18,9 @@ Extract the zip file and just drop the contents in the wp-content/plugins/ direc
 
 == Changelog ==
 
+= 1.1 =
+* Configuration options added: the button may not be displayed automatically, but it can be placed manually in the current theme
+
 = 1.0 =
 * Like-it button and count of "likes" are displayed on each post
 * button text can be customized
