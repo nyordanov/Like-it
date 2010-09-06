@@ -3,6 +3,7 @@
 register_widget('Likeit_Widget');
 class Likeit_Widget extends WP_Widget {
 	function Likeit_Widget() {
+		parent::WP_Widget(false, $name = 'Likeit_Widget');
 	}
 
 	function form($instance) {
