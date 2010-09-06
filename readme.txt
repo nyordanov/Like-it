@@ -18,6 +18,10 @@ Extract the zip file and just drop the contents in the wp-content/plugins/ direc
 
 == Changelog ==
 
+= 2.0 =
+
+* "Most liked posts" widget added
+
 = 1.1 =
 * Configuration options added: the button may not be displayed automatically, but it can be placed manually in the current theme
 * The Like-it table will now be deleted after you uninstall the plugin. It will be saved if you deactivate it, though.
