@@ -27,6 +27,8 @@ if ( !function_exists( 'add_action' ) ) {
 	exit;
 }
 
+require 'widget.php';
+
 global $likeit_table = $wpdb->prefix . 'likeit';
 global $likeit_dbVersion = '1.0';
 
