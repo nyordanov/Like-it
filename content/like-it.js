@@ -8,6 +8,6 @@ jQuery(function($) {
 			$clicked.parent().find('.likeit-count span').fadeOut(350, function() {
 				$(this).text(data).show();
 			});
-		})
+		});
 	});
 });
