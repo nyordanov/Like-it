@@ -10,7 +10,7 @@ Like-it allows visitors to just "like" a post, preventing multiple meaningless c
 
 == Description ==
 
-Like-it allows visitors to just "like" a post instead of commenting, preventing multiple meaningless comments like "that's nice", or providing a faster user experience.
+Like-it allows visitors to just "like" a post instead of commenting, preventing multiple meaningless comments like "that's nice", or providing a faster user experience. The text of the button may be changed in order to suit your purposes better - for example, using "I agree".
 
 == Installation ==
 
