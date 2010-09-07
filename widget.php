@@ -38,7 +38,7 @@ class Likeit_Widget extends WP_Widget {
 	}
 
 	function widget($args, $instance) {
-		global $wpdb;
+		global $wpdb, $likeit_table;
 		
 		extract( $args );
 
@@ -49,7 +49,7 @@ class Likeit_Widget extends WP_Widget {
 		if ( $title )
 			echo $before_title . $title . $after_title;
 			
-		
+		$posts = $wpdb->get_results("SELECT post_id, COUNT(post_id) as likes FROM $likeit_table GROUP BY post_id ORDER BY COUNT(post_id) DESC");
 
 		echo $after_widget;
 		
