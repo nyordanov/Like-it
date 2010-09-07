@@ -20,6 +20,21 @@ class Likeit_Widget extends WP_Widget {
 	}
 
 	function widget($args, $instance) {
+		global $wpdb;
+		
+		extract( $args );
+
+		$title = apply_filters('widget_title', $instance['title'] );
+
+		echo $before_widget;
+
+		if ( $title )
+			echo $before_title . $title . $after_title;
+			
+		
+
+		echo $after_widget;
+		
 	}
 }
 add_action('widgets_init', create_function('', 'return register_widget("Likeit_Widget");'));
