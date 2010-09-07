@@ -1,9 +1,8 @@
 <?php
 
-register_widget('Likeit_Widget');
 class Likeit_Widget extends WP_Widget {
 	function Likeit_Widget() {
-		parent::WP_Widget(false, $name = 'Likeit_Widget');
+		parent::WP_Widget(false, $name = 'Most liked posts');
 	}
 
 	function form($instance) {
@@ -18,4 +17,4 @@ class Likeit_Widget extends WP_Widget {
 	function widget($args, $instance) {
 	}
 }
-
+add_action('widgets_init', create_function('', 'return register_widget("Likeit_Widget");'));
