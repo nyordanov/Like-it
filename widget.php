@@ -33,6 +33,7 @@ class Likeit_Widget extends WP_Widget {
 	function update($new_instance, $old_instance) {
 		$instance = $old_instance;
 		$instance['title'] = strip_tags($new_instance['title']);
+		$instance['displayed'] = strip_tags($new_instance['displayed']);
         return $instance;
 	}
 
