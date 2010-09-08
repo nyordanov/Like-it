@@ -50,6 +50,8 @@ class Likeit_Widget extends WP_Widget {
 			echo $before_title . $title . $after_title;
 			
 		$posts = $wpdb->get_results("SELECT post_id, COUNT(post_id) as likes FROM $likeit_table GROUP BY post_id ORDER BY COUNT(post_id) DESC");
+		
+		require_once('tpl/widget.php');
 
 		echo $after_widget;
 		
