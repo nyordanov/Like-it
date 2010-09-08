@@ -4,10 +4,10 @@ class Likeit_Widget extends WP_Widget {
 	function Likeit_Widget() {
 		
 		$widget_options = array(
-			'description' => 'A widget to show the most liked post (Like-it)'
+			'description' => __('A widget to show the most liked post (Like-it)')
 		);
 		
-		parent::WP_Widget(false, $name = 'Most liked posts', $widget_options);
+		parent::WP_Widget(false, $name = __('Most liked posts'), $widget_options);
 	}
 
 	function form($instance) {
