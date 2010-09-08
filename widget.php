@@ -14,7 +14,7 @@ class Likeit_Widget extends WP_Widget {
 		$defaults = array( 'title' => __('Most liked posts'), 'displayed' => '10' );
 		$instance = wp_parse_args( (array) $instance, $defaults );
 		
-		require_once('tpl/widget-config.php');
+		require('tpl/widget-config.php');
 	}
 
 	function update($new_instance, $old_instance) {
