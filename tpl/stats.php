@@ -38,7 +38,7 @@ if ( !function_exists( 'add_action' ) ) {
 					<?php echo $like->time ?>
 				</div>
 				<div class="likeit_postinfo">
-					<a href="<?php echo $like->post_url?>" title="<?php echo $like->post_name?>"><?php echo $like->post_name?></a>
+					<a href="<?php echo $like->post_url?>" title="<?php echo $like->post_title?>"><?php echo $like->post_title?></a>
 					<?php _e('Total likes for this post:') ?> <?php echo $like->post_liked_count ?>
 				</div>
 			</li>

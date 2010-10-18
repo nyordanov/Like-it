@@ -109,7 +109,7 @@ function likeit_stats() {
 		$like->ip_info = json_decode($ip_info);
 		
 		$like->post_url = get_permalink($like->post_id);
-		$like->post_title = get_post($like->post_id)->title;
+		$like->post_title = get_post($like->post_id)->post_title;
 	}
 	
 	require('tpl/stats.php');
