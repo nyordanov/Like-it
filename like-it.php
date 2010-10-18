@@ -113,6 +113,9 @@ function likeit_stats() {
 		
 		$like->post_liked_count = likeit_get_count_by_post_id($like->post_id);
 	}
+
+	$page = get_query_var('paged') ? get_query_var('paged') : 1;
+	$likeit_per_page = get_option('likeit-per-page');
 	
 	require('tpl/stats.php');
 }
