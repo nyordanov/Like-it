@@ -26,20 +26,20 @@ if ( !function_exists( 'add_action' ) ) {
 	<h2><?php _e('Like-it stats') ?></h2>
 
 	<ul>
-		<?php foreach($likes as $like): ?>
+		<?php foreach($likes as $single): ?>
 			<li>
 				<div class="likeit_ip">
-					<?php echo $like->ip ?>
+					<?php echo $single->ip ?>
 				</div>
-				<div class="likeit_country">
-					<?php echo $like->country ?>
+				<div class="likeit_geo">
+					<?php echo implode(', ', array($single->ip_info->City, $single->ip_info->RegionName, $single->ip_info->CountryName)) ?>
 				</div>
 				<div class="likeit_time">
-					<?php echo $like->time ?>
+					<?php echo $single->time ?>
 				</div>
 				<div class="likeit_postinfo">
-					<a href="<?php echo $like->post_url?>" title="<?php echo $like->post_title?>"><?php echo $like->post_title?></a>
-					<?php _e('Total likes for this post:') ?> <?php echo $like->post_liked_count ?>
+					<a href="<?php echo $single->post_url?>" title="<?php echo $single->post_title?>"><?php echo $single->post_title?></a>
+					<?php _e('Total likes for this post:') ?> <?php echo $single->post_liked_count ?>
 				</div>
 			</li>
 		<?php endforeach ?>
