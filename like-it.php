@@ -87,6 +87,12 @@ function likeit_config_page() {
 	}
 }
 
+// statistics page
+
+function likeit_stats() {
+	require('tpl/stats.php');
+}
+
 // plugin config page 
 
 function likeit_conf() {
