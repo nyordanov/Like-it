@@ -75,12 +75,16 @@ function likeit_uninstall() {
 	}
 }
 
-// register plugin config
+// add menus
 
 add_action('admin_menu', 'likeit_config_page');
 function likeit_config_page() {
-	if ( function_exists('add_options_page') )
-		add_options_page(__('Like-it Configuration'), __('Like-it Configuration'), 'manage_options', 'likeit-config', 'likeit_conf');
+	if(function_exists('add_menu_page'))
+		add_menu_page( __('Like-it'), __('Like-it'), 'manage_options', 'likeit', 'likeit_stats' );
+	if(function_exists('add_submenu_page')) {
+		add_submenu_page( 'likeit', __('Like-it Stats'), __('Like-it Stats'), 'manage_options', 'likeit', 'likeit_stats');
+		add_submenu_page( 'likeit', __('Like-it Configuration'), __('Like-it Configuration'), 'manage_options', 'likeit_conf', 'likeit_conf');
+	}
 }
 
 // plugin config page 
