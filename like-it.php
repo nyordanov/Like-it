@@ -94,7 +94,7 @@ function likeit_stats() {
 	
 	$likes = $wpdb->get_results("SELECT * FROM $likeit_table");
 	
-	foreach($likes as $like) {
+	foreach($likes as &$like) {
 		$ipinfo_url = 'http://ipinfodb.com/ip_query.php?ip='.$like->ip.'&output=json&timezone=false';
 		if(function_exists('curl_init')) {
 			$request = curl_init();
