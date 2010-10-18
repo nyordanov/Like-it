@@ -61,6 +61,7 @@ function likeit_activate() {
 	
 	add_option('likeit-text', 'Like!', '', 'yes');
 	add_option('likeit-autodisplay', 'on', '', 'yes');
+	add_option('likeit-per-page', '30', '', 'yes');
 }
 
 // delete table during uninstall
