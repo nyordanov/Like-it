@@ -24,6 +24,24 @@ if ( !function_exists( 'add_action' ) ) {
 
 <div class="wrap">
 	<h2><?php _e('Like-it stats') ?></h2>
+	
+	<?php if($total_likes > LIKEIT_PER_PAGE): ?>
+		<div class="tablenav">
+			<div class="tablenav-pages">
+				<span class="displaying-num"><?php printf(__('Displaying %d-%d of %d'), $page*LIKEIT_PER_PAGE+1, ($page+1)*LIKEIT_PER_PAGE, $total_likes)?></span>
+				<?php 
+					echo paginate_links( array(
+						'base' => add_query_arg( 'paged', '%#%' ),
+						'format' => '',
+						'prev_text' => __('&laquo;'),
+						'next_text' => __('&raquo;'),
+						'total' => $total_likes,
+						'current' => $page
+					));
+				?>
+			</div>
+		</div>
+	<?php endif; ?>
 
 	<table class="widefat">
 		<?php $thead = "
