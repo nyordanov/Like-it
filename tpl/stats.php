@@ -25,24 +25,35 @@ if ( !function_exists( 'add_action' ) ) {
 <div class="wrap">
 	<h2><?php _e('Like-it stats') ?></h2>
 
-	<ul>
-		<?php foreach($likes as $single): ?>
-			<li>
-				<div class="likeit_ip">
-					<?php echo $single->ip ?>
-				</div>
-				<div class="likeit_geo">
-					<?php echo implode(', ', array($single->ip_info->City, $single->ip_info->RegionName, $single->ip_info->CountryName)) ?>
-				</div>
-				<div class="likeit_time">
-					<?php echo $single->time ?>
-				</div>
-				<div class="likeit_postinfo">
-					<a href="<?php echo $single->post_url?>" title="<?php echo $single->post_title?>"><?php echo $single->post_title?></a>
-					<?php _e('Total likes for this post:') ?> <?php echo $single->post_liked_count ?>
-				</div>
-			</li>
-		<?php endforeach ?>
-	</ul>
+	<table class="widefat">
+		<?php $thead = "
+			<thead>
+				<tr>
+					<th>IP</th>
+					<th>" . __('Geolocation') . "</th>
+					<th>" . __('Time') . "</th>
+					<th>" . __('Post') . "</th>
+				</tr>
+			</thead>
+		"; ?>
+		
+		<?php echo $thead; ?>
+		<tbody>
+			<?php foreach($likes as $single): ?>
+				<tr>
+					<td><?php echo $single->ip ?></td>
+					<td>
+						<?php echo implode(', ', array($single->ip_info->City, $single->ip_info->RegionName, $single->ip_info->CountryName)) ?>
+					</td>
+					<td><?php echo $single->time ?></td>
+					<td>
+						<a href="<?php echo $single->post_url?>" title="<?php echo $single->post_title?>"><?php echo $single->post_title?></a>
+						(<?php echo $single->post_liked_count ?>)
+					</td>
+				</tr>
+			<?php endforeach ?>
+		</tbody>
+		<?php echo $thead ?>
+	</table>
 </div>
 
