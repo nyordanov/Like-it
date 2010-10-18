@@ -92,8 +92,11 @@ function likeit_config_page() {
 
 function likeit_stats() {
 	global $wpdb, $likeit_table;
-	
-	$likes = $wpdb->get_results("SELECT * FROM $likeit_table");
+
+	$page = (isset($_GET['paged'])) ? intval($_GET['paged']) : 1;
+	$likeit_per_page = get_option('likeit-per-page');
+	$from = ($page-1) * $likeit_per_page;
+	$likes = $wpdb->get_results("SELECT * FROM $likeit_table LIMIT $from, $likeit_per_page");
 	
 	foreach($likes as &$like) {
 		$ipinfo_url = 'http://ipinfodb.com/ip_query.php?ip='.$like->ip.'&output=json&timezone=false';
@@ -115,8 +118,6 @@ function likeit_stats() {
 		$like->post_liked_count = likeit_get_count_by_post_id($like->post_id);
 	}
 
-	$page = get_query_var('paged') ? get_query_var('paged') : 1;
-	$likeit_per_page = get_option('likeit-per-page');
 	$total_likes = $wpdb->get_var("SELECT COUNT(*) FROM $likeit_table");
 	
 	require('tpl/stats.php');
