@@ -110,6 +110,8 @@ function likeit_stats() {
 		
 		$like->post_url = get_permalink($like->post_id);
 		$like->post_title = get_post($like->post_id)->post_title;
+		
+		$like->post_liked_count = likeit_get_count_by_post_id($like->post_id);
 	}
 	
 	require('tpl/stats.php');
