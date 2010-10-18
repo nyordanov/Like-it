@@ -34,6 +34,9 @@ if ( !function_exists( 'add_action' ) ) {
 				<div class="likeit_country">
 					<?php echo $like->country ?>
 				</div>
+				<div class="likeit_time">
+					<?php echo $like->time ?>
+				</div>
 				<div class="likeit_postinfo">
 					<a href="<?php echo $like->post_url?>" title="<?php echo $like->post_name?>"><?php echo $like->post_name?></a>
 					<?php _e('Total likes for this post:') ?> <?php echo $like->post_liked_count ?>
