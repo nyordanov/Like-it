@@ -120,11 +120,6 @@ function likeit_stats() {
 // plugin config page 
 
 function likeit_conf() {
-
-    $opt_name = 'mt_favorite_color';
-    $data_field_name = 'mt_favorite_color';
-
-    $opt_val = get_option( $opt_name );
 	
 	if( isset($_POST['likeit-text']) ) {
         update_option( 'likeit-text', $_POST['likeit-text'] );
