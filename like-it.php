@@ -117,6 +117,7 @@ function likeit_stats() {
 
 	$page = get_query_var('paged') ? get_query_var('paged') : 1;
 	$likeit_per_page = get_option('likeit-per-page');
+	$total_likes = $wpdb->get_var("SELECT COUNT(*) FROM $likeit_table");
 	
 	require('tpl/stats.php');
 }
