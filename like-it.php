@@ -56,7 +56,7 @@ function likeit_activate() {
 		require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
 		dbDelta($sql);
 
-		add_option("likeit_dbVersion", $likeit_dbVersion);
+		update_option("likeit_dbVersion", $likeit_dbVersion);
 	}
 	
 	add_option('likeit-text', 'Like!', '', 'yes');
