@@ -143,20 +143,20 @@ function likeit_register_settings() {
 }
 
 // add javascript
-add_action('wp_print_scripts', likeit_scripts);
+add_action('wp_print_scripts', 'likeit_scripts');
 function likeit_scripts() {
 	wp_enqueue_script( 'likeit', plugin_dir_url(__FILE__). 'content/like-it.js', array('jquery'), '0.1');
 	wp_localize_script( 'likeit', 'likeit', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 }
 
 // add css
-add_action('wp_print_styles', likeit_styles);
+add_action('wp_print_styles', 'likeit_styles');
 function likeit_styles() {
 	wp_enqueue_style('likeit', plugin_dir_url(__FILE__).'content/like-it.css', false, '0.1', 'all');
 }
 
 // add filter to echo the Like-it button
-add_filter('the_content', likeit_button_filter);
+add_filter('the_content', 'likeit_button_filter');
 function likeit_button_filter($content) {
 	if( !(is_page() || is_feed()) && get_option('likeit-autodisplay') == 'on' )
 		$content .= likeit_get_button();
