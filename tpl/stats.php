@@ -22,5 +22,24 @@ if ( !function_exists( 'add_action' ) ) {
 
 ?>
 
-<h2><?php _e('Like-it stats') ?></h2>
+<div class="wrap">
+	<h2><?php _e('Like-it stats') ?></h2>
+
+	<ul>
+		<?php foreach($likes as $like): ?>
+			<li>
+				<div class="likeit_ip">
+					<?php echo $like->ip ?>
+				</div>
+				<div class="likeit_country">
+					<?php echo $like->country ?>
+				</div>
+				<div class="likeit_postinfo">
+					<a href="<?php echo $like->post_url?>" title="<?php echo $like->post_name?>"><?php echo $like->post_name?></a>
+					<?php _e('Total likes for this post:') ?> <?php echo $like->post_liked_count ?>
+				</div>
+			</li>
+		<?php endforeach ?>
+	</ul>
+</div>
 
