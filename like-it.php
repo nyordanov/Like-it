@@ -171,7 +171,7 @@ function likeit_button() {
 // generate the Like-it button
 function likeit_get_button() {
 	$canvote = likeit_can_vote(get_the_ID(), $_SERVER['REMOTE_ADDR']) ? 'likeit-canvote' : 'likeit-voted';
-	$text = get_option('likeit-text');
+	$text = stripslashes(get_option('likeit-text'));
 	$id = get_the_ID();
 	$count = likeit_get_count_by_post_id($id);
 	

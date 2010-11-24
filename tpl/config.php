@@ -34,7 +34,7 @@ if ( !function_exists( 'add_action' ) ) {
 	<table class="form-table">
 		<tr>
 			<th scope="row"><label for="likeit-text"><?php _e('Like-it button text') ?></label></th>
-			<td><input type="text" id="likeit-text" name="likeit-text" value="<?php echo get_option('likeit-text')?>" /></td>
+			<td><input type="text" id="likeit-text" name="likeit-text" value="<?php echo stripslashes(get_option('likeit-text'))?>" /></td>
 		</tr>
 		<tr>
 			<th scope="row"><label for="likeit-autodisplay"><?php _e('Display button') ?></label></th>
